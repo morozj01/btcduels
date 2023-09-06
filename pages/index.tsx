@@ -110,7 +110,7 @@ const Home: NextPage = () => {
                 transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
                 style={{ zIndex: 1 }}
               >
-                <p className={`${style['get-started-button']} d-inline-block mt-3`}>
+                <p className={`${style['get-started-button']} d-inline-block mt-3 mb-5 mb-lg-3`}>
                   <a href="https://google.com">
                     Play Now To Earn Crypto
                     <ArrowUpRightCircle size={28} style={{ margin: '-2px 0px 2px 8px' }} />
