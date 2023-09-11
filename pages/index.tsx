@@ -5,40 +5,27 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {
-  AnimatePresence, motion, useTime, useTransform,
+  motion, useTime, useTransform,
 } from 'framer-motion';
 import {
   Discord,
   Instagram,
   Twitter,
   ArrowUpRightCircle,
-  Icon1Circle,
-  Icon2Circle,
-  Icon3Circle,
 } from 'react-bootstrap-icons';
-import { useState } from 'react';
 import Image from 'next/image';
 import CountUp from 'react-countup';
 import style from '../styles/index.module.css';
 import Navbar from '../components/navbar';
-import yellowGlow from '../public/images/yellow-glow.png';
 import duelsLogo from '../public/images/duels-logo.png';
 import divider from '../public/images/divider.png';
 import wireframeWeb from '../public/images/wireframe-web.png';
 import wireframeMobile from '../public/images/wireframe-mobile.png';
 import line from '../public/images/line-1.png';
 import certik from '../public/images/certik.png';
+import galaxyBackground from '../public/images/galaxy-bg.png';
 
 const Home: NextPage = () => {
-  const [showOneText, setShowOneText] = useState(false);
-  const [showOneTitle, setShowOneTitle] = useState(true);
-
-  const [showTwoText, setShowTwoText] = useState(false);
-  const [showTwoTitle, setShowTwoTitle] = useState(true);
-
-  const [showThreeText, setShowThreeText] = useState(false);
-  const [showThreeTitle, setShowThreeTitle] = useState(true);
-
   const time = useTime();
 
   const rotate1 = useTransform(time, [0, 18000], [-80, 360], { clamp: false });
@@ -57,23 +44,14 @@ const Home: NextPage = () => {
           fluid
           className={`${style['section-container']} ${style['hero-section']}`}
         >
+          <Image
+            src={galaxyBackground}
+            alt="Background stars"
+            fill={false}
+            className={style['orbit-image']}
+          />
+
           <Navbar />
-          <motion.span
-            viewport={{ once: true }}
-            initial={{ opacity: 0, scale: 0.7, y: 80 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{ zIndex: 1 }}
-          >
-            <Image
-              src={yellowGlow}
-              alt="Yellow glow"
-              fill={false}
-              style={{
-                position: 'absolute', top: '8%', left: '0px',
-              }}
-            />
-          </motion.span>
 
           <Row className="d-flex align-items-center" style={{ minHeight: '90vh', position: 'relative' }}>
             <Col lg={{ offset: 1, span: 5 }} className="pb-2 px-4 px-lg-3">
@@ -84,7 +62,17 @@ const Home: NextPage = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 style={{ zIndex: 1 }}
               >
-                <p style={{ color: 'white', fontSize: '44px', fontWeight: '600' }} className="mb-4">The Decentralized Betting Platform Where Every Second Counts</p>
+                <p
+                  style={{
+                    color: 'white',
+                    fontSize: '45px',
+                    fontFamily: 'Space Mono !important',
+                    letterSpacing: '-1px',
+                  }}
+                  className="mb-4"
+                >
+                  The Decentralized Betting Platform Where Every Second Counts
+                </p>
               </motion.div>
 
               <motion.div
@@ -106,11 +94,11 @@ const Home: NextPage = () => {
               <motion.div
                 viewport={{ once: true }}
                 initial={{ opacity: 0, y: 150 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
                 style={{ zIndex: 1 }}
               >
-                <p className={`${style['get-started-button']} d-inline-block mt-3 mb-5 mb-lg-3`}>
+                <p className={`${style['get-started-button']} d-inline-block mt-3`}>
                   <a href="https://google.com">
                     Play Now To Earn Crypto
                     <ArrowUpRightCircle size={28} style={{ margin: '-2px 0px 2px 8px' }} />
@@ -121,6 +109,17 @@ const Home: NextPage = () => {
 
             <Col lg={6} className="d-none d-lg-flex justify-content-center align-items-center pb-4 mb-5">
               <div className="w-100" style={{ position: 'relative' }}>
+                <motion.img
+                  src="/images/yellow-glow.png"
+                  alt="BTCDuels logo"
+                  viewport={{ once: true }}
+                  initial={{ opacity: 0, scale: 0.7, y: 80 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  style={{ zIndex: 1, width: '100%' }}
+                  className={style['orbit-image']}
+                />
+
                 <motion.img
                   src="/images/duels-logo.png"
                   alt="BTCDuels logo"
@@ -219,8 +218,8 @@ const Home: NextPage = () => {
       <Container
         id="iterati"
         fluid
-        className={`${style['section-container']} pb-5 p-relative`}
-        style={{ position: 'relative', borderTop: '1px solid #121B50' }}
+        className={`${style['section-container']} pb-5 p-relative text-center`}
+        style={{ position: 'relative' }}
       >
         {/* Background mesh and header */}
         <Row className="d-flex align-items-center mb-2 mb-lg-5" style={{ position: 'relative' }}>
@@ -256,7 +255,10 @@ const Home: NextPage = () => {
               <p
                 className={`${style['hero-text']} text-center pt-5 pt-lg-0`}
                 style={{
-                  color: '#FFFFFF', fontSize: '44px', fontWeight: '600',
+                  color: '#FFFFFF',
+                  fontSize: '44px',
+                  fontFamily: 'Space Mono !important',
+                  letterSpacing: '-1px',
                 }}
               >
                 How It Works
@@ -265,252 +267,168 @@ const Home: NextPage = () => {
           </Col>
         </Row>
 
-        <Row className="py-4 my-4 px-5" style={{ position: 'relative' }}>
-          {/* Central divider */}
-          <motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: 1.1 }}
-            className={style.seperator}
-          />
-          <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-4" style={{ position: 'relative' }}>
-            <motion.img
-              src="/images/step1.png"
-              alt="Arrow icon"
-              viewport={{ once: true }}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
-              className={style['orbit-image']}
-              style={{ height: '60px' }}
-            />
-          </Col>
-
-          <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-4" style={{ position: 'relative' }}>
-            <motion.img
-              src="/images/step2.png"
-              alt="USD icon"
-              viewport={{ once: true }}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.8 }}
-              className={style['orbit-image']}
-              style={{ height: '60px' }}
-            />
-          </Col>
-
-          <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-4" style={{ position: 'relative' }}>
-            <motion.img
-              src="/images/step3.png"
-              alt="Crown icon"
-              viewport={{ once: true }}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 1.0 }}
-              className={style['orbit-image']}
-              style={{ height: '60px' }}
-            />
-          </Col>
-        </Row>
-
-        <Row className="py-4 mt-4 mb-5 px-0 px-lg-5" style={{ position: 'relative' }}>
-          <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-5 mb-4 mb-lg-0">
+        <Container className="px-0">
+          <Row className="py-4 my-4 px-2" style={{ position: 'relative' }}>
+            {/* Central divider */}
             <motion.div
               viewport={{ once: true }}
-              initial={{ opacity: 0, y: 150 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
-              style={{ position: 'relative', width: '100%' }}
-            >
-              <div
-                className={`${style['feature-box']} d-flex align-items-center justify-content-center w-100`}
-                style={{ zIndex: 1 }}
-                onMouseEnter={() => {
-                  setShowOneTitle(false);
-                  setShowOneText(true);
-                }}
-                onMouseLeave={() => {
-                  setShowOneText(false);
-                  setShowOneTitle(true);
-                }}
+              initial={{ opacity: 0, scale: 0.3 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 1.1 }}
+              className={style.seperator}
+            />
+            <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-4" style={{ position: 'relative' }}>
+              <motion.img
+                src="/images/step1.png"
+                alt="Arrow icon"
+                viewport={{ once: true }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className={style['orbit-image']}
+                style={{ height: '60px' }}
+              />
+            </Col>
+
+            <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-4" style={{ position: 'relative' }}>
+              <motion.img
+                src="/images/step2.png"
+                alt="USD icon"
+                viewport={{ once: true }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.8 }}
+                className={style['orbit-image']}
+                style={{ height: '60px' }}
+              />
+            </Col>
+
+            <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-4" style={{ position: 'relative' }}>
+              <motion.img
+                src="/images/step3.png"
+                alt="Crown icon"
+                viewport={{ once: true }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 1.0 }}
+                className={style['orbit-image']}
+                style={{ height: '60px' }}
+              />
+            </Col>
+          </Row>
+
+          <Row className="py-4 mt-4 mb-5 px-2" style={{ position: 'relative' }}>
+            <Col lg={{ span: 4 }} className="d-flex justify-content-center px-4 mb-4 mb-lg-0">
+              <motion.div
+                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 200 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7, ease: 'backOut' }}
+                style={{ position: 'relative', width: '100%', height: '100%' }}
               >
-                <AnimatePresence initial={false} mode="wait">
-                  {showOneText && !showOneTitle
-                    ? (
-                      <motion.div
-                        key="labelsText"
-                        viewport={{ once: true }}
-                        initial={{ opacity: 0, y: '75%' }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        exit={{ opacity: 0, y: '75%' }}
-                      >
-                        <div className="p-3 text-center" style={{ fontSize: '24px' }}>
-                          <p className="m-0">
-                            Will the price of Bitcoin rise or fall
-                            in the next minute? Make your
-                            prediction and get ready to duel!
-                          </p>
-                        </div>
+                <div className={style['feature-box-gradient']}>
+                  <div
+                    className={`${style['feature-box']} d-flex justify-content-center w-100`}
+                    style={{ zIndex: 1 }}
+                  >
+                    <div className="px-3 py-5 text-start">
+                      <div style={{
+                        height: '90px',
+                        backgroundImage: 'url(/images/step1-bg.png)',
+                        backgroundPosition: 'top',
+                        borderRadius: '5px',
+                      }}
+                      />
+                      <p className="mb-3 mt-4" style={{ fontSize: '26px', fontWeight: '500' }}>
+                        {'Predict Bitcoin\'s Price Direction'}
+                      </p>
+                      <p className="m-0" style={{ fontSize: '20px', color: '#c9c9c9' }}>
+                        Will the price of Bitcoin rise or fall
+                        in the next minute? Make your
+                        prediction and get ready to duel!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </Col>
 
-                      </motion.div>
-                    )
-                    : null}
-
-                  {showOneTitle ? (
-                    <motion.div
-                      key="labelsTitle"
-                      viewport={{ once: true }}
-                      initial={{ opacity: 0, y: '-75%' }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      exit={{ opacity: 0, y: '-75%' }}
-                    >
-                      <div className="p-3 text-center" style={{ fontSize: '30px' }}>
-                        <Icon1Circle size={38} />
-                        <p className="m-0 mt-3">{'Predict the direction of Bitcoin\'s price'}</p>
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          </Col>
-
-          <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-5 mb-4 mb-lg-0">
-            <motion.div
-              viewport={{ once: true }}
-              initial={{ opacity: 0, y: 150 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8, ease: 'easeOut' }}
-              style={{ position: 'relative', width: '100%' }}
-            >
-              <div
-                className={`${style['feature-box']} d-flex align-items-center justify-content-center w-100`}
-                style={{ zIndex: 1 }}
-                onMouseEnter={() => {
-                  setShowTwoTitle(false);
-                  setShowTwoText(true);
-                }}
-                onMouseLeave={() => {
-                  setShowTwoText(false);
-                  setShowTwoTitle(true);
-                }}
+            <Col lg={{ span: 4 }} className="d-flex justify-content-center px-4 mb-4 mb-lg-0">
+              <motion.div
+                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 200 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: 'backOut' }}
+                style={{ position: 'relative', width: '100%', height: '100%' }}
               >
-                <AnimatePresence initial={false} mode="wait">
-                  {showTwoText && !showTwoTitle
-                    ? (
-                      <motion.div
-                        key="labelsText"
-                        viewport={{ once: true }}
-                        initial={{ opacity: 0, y: '75%' }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        exit={{ opacity: 0, y: '75%' }}
-                      >
-                        <div className="p-3 text-center" style={{ fontSize: '24px' }}>
-                          <p className="m-0">
-                            Join a round by depositing a bet
-                            into the betting pool for your
-                            predicted direction (price increase
-                            or decrease).
+                <div className={style['feature-box-gradient']}>
+                  <div
+                    className={`${style['feature-box']} d-flex justify-content-center w-100`}
+                    style={{ zIndex: 1 }}
+                  >
+                    <div className="px-3 py-5 text-start">
+                      <div style={{
+                        height: '90px',
+                        backgroundImage: 'url(/images/step2-bg.png)',
+                        backgroundPosition: 'center',
+                        borderRadius: '5px',
+                      }}
+                      />
+                      <p className="mb-3 mt-4" style={{ fontSize: '26px', fontWeight: '500' }}>
+                        Join the Betting Pool for Your Prediction
+                      </p>
+                      <p className="m-0" style={{ fontSize: '20px', color: '#c9c9c9' }}>
+                        Deposit a bet
+                        into the betting pool corresponding to your
+                        predicted direction (price increase
+                        or decrease).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </Col>
 
-                            Start betting with as low as $5
-                          </p>
-                        </div>
-
-                      </motion.div>
-                    )
-                    : null}
-
-                  {showTwoTitle ? (
-                    <motion.div
-                      key="labelsTitle"
-                      viewport={{ once: true }}
-                      initial={{ opacity: 0, y: '-75%' }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      exit={{ opacity: 0, y: '-75%' }}
-                    >
-                      <div className="p-3 text-center" style={{ fontSize: '30px' }}>
-                        <Icon2Circle size={38} />
-                        <p className="m-0 mt-3">Join a betting pool with a single click</p>
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          </Col>
-
-          <Col lg={{ span: 4 }} className="d-flex align-items-center justify-content-center px-5">
-            <motion.div
-              viewport={{ once: true }}
-              initial={{ opacity: 0, y: 150 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.0, ease: 'easeOut' }}
-              style={{ position: 'relative', width: '100%' }}
-            >
-              <div
-                className={`${style['feature-box']} d-flex align-items-center justify-content-center w-100`}
-                style={{ zIndex: 1 }}
-                onMouseEnter={() => {
-                  setShowThreeTitle(false);
-                  setShowThreeText(true);
-                }}
-                onMouseLeave={() => {
-                  setShowThreeText(false);
-                  setShowThreeTitle(true);
-                }}
+            <Col lg={{ span: 4 }} className="d-flex justify-content-center px-4">
+              <motion.div
+                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 200 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9, ease: 'backOut' }}
+                style={{ position: 'relative', width: '100%', height: '100%' }}
               >
-                <AnimatePresence initial={false} mode="wait">
-                  {showThreeText && !showThreeTitle
-                    ? (
-                      <motion.div
-                        key="labelsText"
-                        viewport={{ once: true }}
-                        initial={{ opacity: 0, y: '75%' }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        exit={{ opacity: 0, y: '75%' }}
-                      >
-                        <div className="p-3 text-center" style={{ fontSize: '24px' }}>
-                          <p className="m-0">
-                            {`Predicted correctly?
-                            Congratulations - you've won a payout.
-                            Collect your reward instantly and get ready for the next round.`}
-                          </p>
-                        </div>
-
-                      </motion.div>
-                    )
-                    : null}
-
-                  {showThreeTitle ? (
-                    <motion.div
-                      key="labelsTitle"
-                      viewport={{ once: true }}
-                      initial={{ opacity: 0, y: '-75%' }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      exit={{ opacity: 0, y: '-75%' }}
-                    >
-                      <div className="p-3 text-center" style={{ fontSize: '30px' }}>
-                        <Icon3Circle size={38} />
-                        <p className="m-0 mt-3">Collect your winnings instantly</p>
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          </Col>
-        </Row>
+                <div className={style['feature-box-gradient']}>
+                  <div
+                    className={`${style['feature-box']} d-flex justify-content-center w-100`}
+                    style={{ zIndex: 1 }}
+                  >
+                    <div className="px-3 py-5 text-start">
+                      <div style={{
+                        height: '90px',
+                        backgroundImage: 'url(/images/step3-bg.png)',
+                        backgroundPosition: 'top',
+                        borderRadius: '5px',
+                      }}
+                      />
+                      <p className="mb-3 mt-4" style={{ fontSize: '26px', fontWeight: '500' }}>
+                        Collect Your Winnings Instantly
+                      </p>
+                      <p className="m-0" style={{ fontSize: '20px', color: '#c9c9c9' }}>
+                        {`Predicted correctly?
+                        You've won a payout!
+                        Collect your reward instantly and get ready for the next round.`}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </Col>
+          </Row>
+        </Container>
       </Container>
 
       <Container className={style['section-container']} fluid style={{ minHeight: '100vh', overflow: 'visible' }}>
-        <Row className="d-flex align-items-center pb-5" style={{ minHeight: '100vh', background: 'radial-gradient(#1A1B6E, #000717 70%)' }}>
+        <Row className="d-flex align-items-center pb-5" style={{ minHeight: '100vh', background: 'url(/images/galaxy-bg.png),radial-gradient(#1A1B6E, #000717 70%)' }}>
           <div>
             <Row className="mb-4 pb-4">
               <Col lg={12} style={{ position: 'relative' }}>
@@ -585,6 +503,13 @@ const Home: NextPage = () => {
                           end={5534}
                           start={2000}
                           duration={5}
+                          style={{
+                            background: '-webkit-linear-gradient(#84CDE4,#84CDE4,#84CDE4,#FFFFFF)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            fontFamily: 'Space Mono !important',
+                            letterSpacing: '-1px',
+                          }}
                         />
                       </p>
                       <p style={{ fontSize: '26px' }}>players have participated</p>
@@ -614,6 +539,13 @@ const Home: NextPage = () => {
                           end={837491}
                           start={600000}
                           duration={5}
+                          style={{
+                            background: '-webkit-linear-gradient(#84CDE4,#84CDE4,#84CDE4,#FFFFFF)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            fontFamily: 'Space Mono !important',
+                            letterSpacing: '-1px',
+                          }}
                         />
                       </p>
                       <p style={{ fontSize: '26px' }}>earned by winners</p>
@@ -643,6 +575,13 @@ const Home: NextPage = () => {
                           end={625474}
                           start={452400}
                           duration={5}
+                          style={{
+                            background: '-webkit-linear-gradient(#84CDE4,#84CDE4,#84CDE4,#FFFFFF)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            fontFamily: 'Space Mono !important',
+                            letterSpacing: '-1px',
+                          }}
                         />
                       </p>
                       <p style={{ fontSize: '26px' }}>individual bets made</p>
@@ -670,6 +609,13 @@ const Home: NextPage = () => {
                           end={56391}
                           start={35321}
                           duration={5}
+                          style={{
+                            background: '-webkit-linear-gradient(#84CDE4,#84CDE4,#84CDE4,#FFFFFF)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            fontFamily: 'Space Mono !important',
+                            letterSpacing: '-1px',
+                          }}
                         />
                       </p>
                       <p style={{ fontSize: '26px' }}>rounds played</p>
@@ -702,8 +648,8 @@ const Home: NextPage = () => {
               <div className={`${style['certik-badge']} text-start p-4 px-5`}>
                 SECURED BY
                 <Image
-                  style={{ margin: '-4px 0px 4px 25px' }}
-                  className="ms-0 ms-lg-3"
+                  style={{ margin: '-4px 0px 4px 0px' }}
+                  className="ms-0 ms-lg-4"
                   src={certik}
                   alt="Certik logo"
                   fill={false}
@@ -725,7 +671,7 @@ const Home: NextPage = () => {
                 {' '}
                 <a href="https://polygonscan.com/address/0xdb414fe5a6ae09f4b58df1e5615c38c4bee10a84" target="_blank" className={`${style['description-link']}`}>smart contract</a>
                 {' '}
-                has passed a rigorous audit so
+                has passed a rigorous audit process so
                 you can play with peace of mind.
               </p>
             </motion.div>
@@ -784,7 +730,7 @@ const Home: NextPage = () => {
           </Col>
 
           <Col lg={{ offset: 1, span: 5 }}>
-            <Row>
+            <Row className="ps-2 ps-lg-0">
               <Col lg={6}>
                 <a href="https://btcduels.com/trade" target="_blank" rel="noreferrer"><p className="d-flex justify-content-start mb-2" style={{ color: 'white', fontSize: '20px' }}>Leaderboard</p></a>
                 <a href="https://btcduels.com/trade"><p className="d-flex justify-content-start mb-2" style={{ color: 'white', fontSize: '20px' }}>Tutorial</p></a>
@@ -804,18 +750,3 @@ const Home: NextPage = () => {
   );
 };
 export default Home;
-
-/**
- *
- *
- * <motion.img
-          src="/images/vector.png"
-          alt="Yellow glow"
-          className={style['orbit-image']}
-          viewport={{ once: true, amount: 0.1 }}
-          initial={{ scale: 2, filter: 'blur(20px)' }}
-          whileInView={{ scale: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.6 }}
-          style={{ zIndex: 1, width: '100vw' }}
-        />
- */

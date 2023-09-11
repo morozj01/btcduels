@@ -2,6 +2,8 @@
   position: relative;
   overflow: hidden;
   background-color: #000717; 
+  background: url('/images/galaxy-bg.png'), #000717;
+  background-size: cover;
 }
 
 .hero-section {
@@ -9,7 +11,7 @@
   background: linear-gradient(-180deg, #1A1B6E, #000717);
   animation: gradient .6s ease-out;
   background-repeat:no-repeat;
-  
+  overflow:hidden;
 }
 
 @keyframes gradient {
@@ -22,15 +24,15 @@
 }
 
 .hero-text {
-  margin:-9% 0px 0px 0px;
+  margin:-11% 0px 0px 0px;
 }
 
 .get-started-button {
   font-weight:600;
   letter-spacing:.6px;
   border: 1px solid #EBBD54;
-  padding:12px 15px 12px 15px;
-  border-radius:10px;
+  padding:12px 18px 12px 18px;
+  border-radius:30px;
   font-size:24px;
   transition: all .3s ease-in-out;
   background-color:#EBBD54;
@@ -54,26 +56,32 @@
 }
 
 .feature-box {
-  border:1px solid white;
-  border-radius:20px;
-  background-color:transparent;
+  border-radius:15px;
+  background-color:#0c0e4e;
   color:white;
   min-height:300px;
   padding: 2px;
-  transition: all .4s ease-in-out;
   overflow:hidden;
+  height:100%;
 }
 
-.feature-box:hover {
+.feature-box-gradient {
+  display:inline-block;
+  padding:3px;
+  border-radius:15px;
+  background: linear-gradient(45deg, #3C53D7, #84E4A4);
+  transition: all .3s ease-in-out;
+  height:100%;
+}
+
+.feature-box-gradient:hover {
   cursor:default !important; 
-  color: #EBBD54 !important;
-  border:1px solid #EBBD54;
-  background-color:transparent;
+  transform: scale(105%);
 }
 
 .seperator {
   position: absolute;
-  width: 60%;
+  width: 68%;
   height: 5px;
   top: 0;
   bottom:0;
@@ -140,6 +148,8 @@
   background-color:#001E43;
   overflow:hidden;
   margin-top:3px;
+  font-family: Space Mono !important;
+  letter-spacing: 4px;
 }
 
 .certik-badge-gradient {
@@ -172,11 +182,11 @@
 }
 
 .description {
-  font-size:38px;
+  font-size:36px;
 }
 
 .description-link {
-  color:#4DB8B0;
+  color:#84CDE4;
   position: relative;
   border:none;
   margin: 10px 0 -10px 0px;
@@ -187,7 +197,7 @@
 
 .description-link:hover {
   cursor: pointer;
-  color:#4DB8B0;
+  color:#84CDE4;
 }
 
 .description-link:after {
@@ -200,7 +210,7 @@
   left: 0%;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
-  background-color:#4DB8B0;
+  background-color:#84CDE4;
 }
 
 .description-link:hover:after {

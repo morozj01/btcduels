@@ -3,7 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { List } from 'react-bootstrap-icons';
+import {
+  BarChart, ChatText, JournalCheck, List,
+} from 'react-bootstrap-icons';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -51,13 +53,22 @@ function Navbar() {
         <Col lg={{ offset: 1, span: 11 }}>
           <ListGroup horizontal>
             <ListGroup.Item className={`${style['nav-item']}`}>
-              <Link href="/">Leaderboard</Link>
+              <Link href="/">
+                <BarChart style={{ margin: '-2px 10px 3px 0px' }} />
+                Leaderboard
+              </Link>
             </ListGroup.Item>
             <ListGroup.Item className={`${style['nav-item']}`}>
-              <Link href="/">Tutorial</Link>
+              <Link href="/">
+                <JournalCheck style={{ margin: '-2px 10px 3px 0px' }} />
+                Tutorial
+              </Link>
             </ListGroup.Item>
-            <ListGroup.Item className={`${style['nav-item']}`}>
-              <Link href="/">FAQ</Link>
+            <ListGroup.Item className={`${style['nav-item']}`} style={{ marginTop: '-0.5px' }}>
+              <Link href="/">
+                <ChatText style={{ margin: '-2px 10px 3px 0px' }} />
+                FAQ
+              </Link>
             </ListGroup.Item>
           </ListGroup>
         </Col>
